@@ -1,6 +1,9 @@
+import styled from 'styled-components';
 import { createGlobalStyle } from 'styled-components';
 import 'modern-normalize';
-
+export const Section = styled.div`
+  padding: 20px;
+`;
 export const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;

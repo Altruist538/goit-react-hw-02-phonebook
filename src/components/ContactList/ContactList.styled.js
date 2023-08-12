@@ -11,10 +11,7 @@ export const Button = styled.button`
   margin-left: 10px;
   padding: 4px;
   border: none;
-
   border-radius: 4px;
   cursor: pointer;
-
- 
   }
 `;

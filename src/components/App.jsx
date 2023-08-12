@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import { ContactList } from './ContactList/ContactList';
-import { GlobalStyle } from './GlobalStyle';
+import { GlobalStyle, Section } from './GlobalStyle';
 import { ContactForm } from './ContactForm/ContactForm';
 export class App extends Component {
   state = {
@@ -29,7 +29,7 @@ export class App extends Component {
   render() {
     return (
       <>
-        <div>
+        <Section>
           <h1>Phonebook</h1>
           <ContactForm onAdd={this.addQuiz} />
 
@@ -38,7 +38,7 @@ export class App extends Component {
             contacts={this.state.contacts}
             onDelete={this.handleDelete}
           />
-        </div>
+        </Section>
         <GlobalStyle />
       </>
     );
