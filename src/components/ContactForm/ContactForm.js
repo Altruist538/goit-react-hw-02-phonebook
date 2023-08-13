@@ -7,9 +7,14 @@ import {
   StyledError,
   Button,
 } from './ContactForm.styled';
-const ContactsSchema = Yup.object().shape({
+// const phoneRegExp = '\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}';
+const validationSchema = Yup.object().shape({
   name: Yup.string().min(2).max(50).required('* Name is required'),
-  number: Yup.string().min(6).max(10).required(''),
+  number: Yup.string()
+    // .matches(phoneRegExp, 'Phone number is not valid')
+    .min(6, 'Phone number is too short')
+    .max(16, 'Phone number is too long')
+    .required('* Enter phone number'),
 });
 export const ContactForm = ({ onAdd }) => {
   return (
@@ -18,7 +23,7 @@ export const ContactForm = ({ onAdd }) => {
         name: '',
         number: '',
       }}
-      validationSchema={ContactsSchema}
+      validationSchema={validationSchema}
       onSubmit={(values, actions) => {
         onAdd({ ...values, id: nanoid() });
         actions.resetForm();
@@ -27,23 +32,13 @@ export const ContactForm = ({ onAdd }) => {
       <StyledForm>
         <label>
           Name
-          <StyledField
-            type="text"
-            name="name"
-            title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-            required
-          />
+          <StyledField type="text" name="name" placeholder="Jacob Mercer" />
           <StyledError name="name" component="div" />
         </label>
 
         <label>
           Number
-          <StyledField
-            type="number"
-            name="number"
-            title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-            required
-          />
+          <StyledField type="tel" name="number" placeholder="xxx-xx-xx" />
           <StyledError name="number" component="div" />
         </label>
 
