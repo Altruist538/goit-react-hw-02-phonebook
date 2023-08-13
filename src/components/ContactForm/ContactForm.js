@@ -37,7 +37,7 @@ export const ContactForm = ({ onAdd }) => {
 
           <label>
             Number
-            <StyledField type="tel" name="number" placeholder="xxx-xx-xx" />
+            <StyledField type="number" name="number" placeholder="xxx-xx-xx" />
             <StyledError name="number" component="div" />
           </label>
 
